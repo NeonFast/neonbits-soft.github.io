@@ -22,7 +22,7 @@
             100% {background-position: 0% 50%;}
         }
         h1 {
-            background: -webkit-linear-gradient(right, #008000, #EE82EE);
+            background: -webkit-linear-gradient(right, #1372bf, #4c13bf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -107,8 +107,8 @@
             align-items: center;
         }
         .app-description img {
-            width: 100px;
-            height: 100px;
+            width: 450px;
+            height: 450px;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -121,10 +121,10 @@
     </style>
 </head>
 <body>
-    <h1 id="welcome-text">Добро пожаловать на наш сайт!</h1>
+    <h1 id="welcome-text">Добро пожаловать на мой сайт!</h1>
     <div class="button-container">
-        <button class="download-button" onclick="openModal('Cookie Launcher', 'Описание Cookie Launcher', 'cookie_icon.jpg', ['image1.jpg', 'image2.jpg', 'image3.jpg'])">Cookie Launcher</button>
-        <button class="download-button" onclick="openModal('MegaAHK', 'Описание MegaAHK', 'megaahk_icon.jpg', ['image4.jpg', 'image5.jpg', 'image6.jpg'])">MegaAHK</button>
+        <button class="download-button" onclick="openModal('Cookie Launcher', 'Простой лаунчер майнкрафт \nБез оптифайна', 'cookie_icon.jpg', ['image1.jpg', 'image2.jpg', 'image3.jpg'], 'https://download1529.mediafire.com/nz2ihx3ed2egos1Nwt38gzMHrSICT8ZrsG5JF-dIlsuYsvqiYmLqkoD5hp3shUA30OdHFx9eD24_0ooGwIcS7gp6-Z6UUXYt6gPRofoNgip9fVJK1_VGT4qaA3XIfTAN4EF-PjA3Z9EBSsVAuCQb5N2S-6naD4Gr3mmpokw-h0Rv/3y6q8krduzpkr4w/CL+Beta.rar')">Cookie Launcher</button>
+        <button class="download-button" onclick="openModal('MegaAHK', 'В этой программе собрано \nмного ахк скриптов \nдля кс 2 \n(ну может и для кс:го) \nЯ НЕ НЕСУ ОТВЕСТВЕНОСТИ \nЗА ТО ЧТО ВЫ \nПОЛУЧИТЕ БАН', 'megaahk_icon.jpg', ['image4.jpg', 'image5.jpg', 'image6.jpg'], 'https://download1321.mediafire.com/h49q3adeaghgcta-3CaUwVmzQ8_gXBbxz7PXGbMbql5pMU1q-BEN0WwyKdlwvNzu4BtfVTuv_K-G7_L80z_GvkqUhwdT44BRfcF1MEboVsDknANcpf7MnVihDGFfmP1stvTsKj_DSAREmaSqS9aMHxHEwhMMOsX02yFSZJp5IEcp/r17l1e2az15gshe/MegaAHK.rar')">MegaAHK</button>
     </div>
     <div id="modal">
         <div class="modal-content">
@@ -136,17 +136,18 @@
                 <p id="programDescription"></p>
                 <img id="programImage2">
             </div>
-            <a href="http://www.mediafire.com/file/yourfile" class="download-button">Скачать</a>
+            <a id="downloadLink" href="" class="download-button">Скачать</a>
         </div>
     </div>
     <footer>© 2024 Все права защищены.</footer>
     <script>
-        function openModal(name, description, icon, images) {
+        function openModal(name, description, icon, images, downloadLink) {
             document.getElementById('programName').innerText = name;
             document.getElementById('programDescription').innerText = description;
             document.getElementById('programIcon').src = icon;
             document.getElementById('programImage1').src = images[0];
             document.getElementById('programImage2').src = images[1];
+            document.getElementById('downloadLink').href = downloadLink;
             var modal = document.getElementById('modal');
             modal.style.animation = 'fadein 2s';
             modal.style.display = 'block';
