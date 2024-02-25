@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Скачать программы</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, #23a6d5, #23d5ab, #ee7752, #e73c7e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        h1 {
+            background: -webkit-linear-gradient(right, #008000, #EE82EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .download-button {
+            background-color: transparent;
+            border: 2px solid black;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 12px;
+        }
+        .download-button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            animation: fadein 2s;
+            opacity: 1;
+        }
+        @keyframes fadein {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes fadeout {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: fadein 2s;
+        }
+        .close-button {
+            float: right;
+            width: 25px;
+            line-height: 25px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+        }
+        .close-button:hover {
+            background-color: darkred;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .app-description {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .app-description img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome-text">Добро пожаловать на наш сайт!</h1>
+    <div class="button-container">
+        <button class="download-button" onclick="openModal('Cookie Launcher', 'Описание Cookie Launcher', 'cookie_icon.jpg', ['image1.jpg', 'image2.jpg', 'image3.jpg'])">Cookie Launcher</button>
+        <button class="download-button" onclick="openModal('MegaAHK', 'Описание MegaAHK', 'megaahk_icon.jpg', ['image4.jpg', 'image5.jpg', 'image6.jpg'])">MegaAHK</button>
+    </div>
+    <div id="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">×</span>
+            <h2 id="programName"></h2>
+            <img id="programIcon" class="app-icon">
+            <div class="app-description">
+                <img id="programImage1">
+                <p id="programDescription"></p>
+                <img id="programImage2">
+            </div>
+            <a href="http://www.mediafire.com/file/yourfile" class="download-button">Скачать</a>
+        </div>
+    </div>
+    <footer>© 2024 Все права защищены.</footer>
+    <script>
+        function openModal(name, description, icon, images) {
+            document.getElementById('programName').innerText = name;
+            document.getElementById('programDescription').innerText = description;
+            document.getElementById('programIcon').src = icon;
+            document.getElementById('programImage1').src = images[0];
+            document.getElementById('programImage2').src = images[1];
+            var modal = document.getElementById('modal');
+            modal.style.animation = 'fadein 2s';
+            modal.style.display = 'block';
+        }
+        function closeModal() {
+            var modal = document.getElementById('modal');
+            modal.style.animation = 'fadeout 1s';
+            setTimeout(function(){ modal.style.display = 'none'; modal.style.animation = 'fadein 2s'; }, 1000);
+        }
+        window.onload = function() {
+            var text = document.getElementById('welcome-text');
+            var str = text.innerHTML;
+            var i = 0;
+            text.innerHTML = "";
+            var typing = setInterval(function() {
+                if(i < str.length) {
+                    text.innerHTML += str.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
